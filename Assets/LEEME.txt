@@ -1,0 +1,46 @@
+------------------------------------LINKS-------------------------------------------------------------
+-GitHub para Windows:
+https://desktop.github.com/
+
+-Unity Hub: 
+	*Les permite tener varias versiones de unity, y asignarselos a cada proyecto por separado.
+https://blogs.unity3d.com/es/2018/01/24/streamline-your-workflow-introducing-unity-hub-beta/
+
+
+-------------------------------------Sobre los niveles------------------------------------------------
+
+-Version de Unity que vamos a usar es: 2017.3.0f3  ---> CHEQUEEN ESTO PUTOS.
+
+El Área de un nivel debe abarcar: 
+	-Un Cubo(Probuilder) de  60 x 60 x 40 mts.	
+	-La altura minima y maxima se puede discutir, pero por ahora el limite minimo es Y: -21.
+	Por eso:
+	-Al caer a Y: -21 se respawnea en el ultimo punto de control.
+	-Hay un material rojo, que se debe aplicar a todas las plataformas de entrada y salida.
+	-Las posiciones de las entradas y salidas tienen que ser constantes y Centradas. Traten de que 
+	las plataformas tengan dimensiones divisibles x 2(pares). Ej: 2x2,4x4,6x6. La altura siempre 		es 1.
+A tener en cuenta:
+	-HAGAN TODO EN UN ESCENARIO NUEVO. Para ser mas prolijos, usen un escenario por cada nivel que 	crean. y UN SOLO escenario, para probar que los prefabs coincidan.
+	-Cuando terminen el diseño del nivel, meten todo dentro de un gameobject vacio y lo hacen 		prefab.
+	-El GameObject vacio tiene que tener un nombre reconocible.
+	-El mismo va a guardar un script en donde se especifica la dificultad y el tipo.
+	-El tipo va a ser un numero x que le vamos a asignar cuando tengamos todos los niveles.
+	-La dificultad va de la mano de ustedes.
+	-Para ahorrarse trabajo, hagan un nivel sensillo, y despues copien el prefab y agregenle 		variaciones, asi pueden crear un mismo nivel, con varias dificultades.
+	
+	-La cantidad de niveles y variaciones por niveles lo decidimos por wapp.
+	-CUANDO TERMINEN DE LEER ESTO MAS VALE QUE HABLEN O LES CAE UN SOPAPO.
+
+Se pueden usar:
+	-Escaleras de z x 3 x 3. 10 Escalones.
+	-Escaleras de z x 3 x 4. 8 Escalones.
+	* z es el ancho de la escalera.
+	* El alto siempre va a ser 3 como maximo. No se vayan a la mrda con el ancho y el largo.
+
+	-Cubos: no hay restriccion. Porque lo pueden usar para paredes.
+	-Plataformas: Si no conectan con nada, traten de no pasarse de 6 x 6.
+	-Pinchos: Hay un prefab de pinchos, usenlo a discrecion.
+	-Rampas: No hay restriccion, solo no exageren con los largos.
+
+Mientras respeten esas cosas, son libres de hacer lo que les cante las bolas xd.
+Si tienen preguntas: ia tu sabe papuh ¬u¬ (hablame por wapp nigga).
