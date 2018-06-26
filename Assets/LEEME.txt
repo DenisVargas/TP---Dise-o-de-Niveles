@@ -32,6 +32,10 @@ A tener en cuenta:
 	-CUANDO TERMINEN DE LEER ESTO MAS VALE QUE HABLEN O LES CAE UN SOPAPO.
 
 Se pueden usar:
+	-------------------AÑADIDO------------------------------
+	-Prefab para el Character controller, con cámara y Punto de respawn ;D
+	Lo encuentran en prefabs/Test/
+	--------------------------------------------------------
 	-Escaleras de z x 3 x 3. 10 Escalones.
 	-Escaleras de z x 3 x 4. 8 Escalones.
 	* z es el ancho de la escalera.
