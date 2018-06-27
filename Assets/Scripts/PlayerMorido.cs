@@ -1,22 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMorido : MonoBehaviour {
-    public GameObject PuntoInicial;
-    public Vector3 PosicionRespawn;
+	public GameObject PuntoInicial;
+	public float PosicionMinima = 0;
 
-
+	private Vector3 PosicionRespawn;
 	// Use this for initialization
 	void Start () {
-        PosicionRespawn = PuntoInicial.transform.position;
+		PosicionRespawn = PuntoInicial.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (this.transform.position.y < -21)
-        {
-            transform.position = PosicionRespawn;
-        }
+		if (transform.position.y < PosicionMinima)
+		{
+			transform.position = PosicionRespawn;
+		}
 	}
 }

@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4767144032843478}
   m_Layer: 0
-  m_Name: TestNivel
+  m_Name: Player+Respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuntoInicial: {fileID: 1908332971734708}
-  PosicionRespawn: {x: 0, y: 0, z: 0}
+  PosicionMinima: -21
 --- !u!124 &124410019792941478
 Behaviour:
   m_ObjectHideFlags: 1
