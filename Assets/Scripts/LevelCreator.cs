@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelCreator : MonoBehaviour {
 	public GameObject LevelNode; //Nodo de nivel.
 	public float NodeDistance = 60; //Distancia entre niveles.
-	[Range(3,12)]
+	[Range(3,24)]
 	public int TreeLenght = 4; //Cantidad de nodos a generar.
 	public int LevelNodeLayer;
 
