@@ -2,9 +2,6 @@
 
 public static class DFS
 {
-	public static Node first;
-	public static Node last;
-
 /// <summary>
 	/// Dados dos nodos, recorre un arbol de nodos, hasta encontrar el segundo y devuelve el recorrido.
 	/// </summary>
@@ -67,5 +64,4 @@ public static class DFS
 		CorrectWay.Add(CurrentNode);
 		return CorrectWay;
 	}
-
 }
