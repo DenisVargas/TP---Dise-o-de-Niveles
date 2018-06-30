@@ -24,7 +24,16 @@ public static class DFS
 			CurrentNode.visited = true;
 			
 			if (CurrentNode == end)
-				return Recorrido;
+			{
+				if (returnCorrectPath)
+				{
+					var CorrectWayList = CorrectPath(end);
+					Recorrido = CorrectWayList;
+					return Recorrido;
+				}
+				else
+					return Recorrido;
+			}
 			foreach (var CurrentConnection in CurrentNode.Connections)
 				if (!CurrentConnection.visited)
 				{
@@ -44,11 +53,11 @@ public static class DFS
 		return Recorrido;
 	}
 
-    /// <summary>
-    /// Dado un nodo, retorna el camino formado por sus "Padres".
-    /// </summary>
-    /// <param name="EndNode">El nodo final de un arbol ya procesado.</param>
-    /// <returns>Camino correcto.</returns>
+	/// <summary>
+	/// Dado un nodo, retorna el camino formado por sus "Padres".
+	/// </summary>
+	/// <param name="EndNode">El nodo final de un arbol ya procesado.</param>
+	/// <returns>Camino correcto.</returns>
 	private static List<Node> CorrectPath(Node EndNode)
 	{
 		List<Node> CorrectWay = new List<Node>();
