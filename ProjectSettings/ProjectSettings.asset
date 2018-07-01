@@ -638,15 +638,15 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Build: 0
-    Collab: 1
+    Collab: 0
     ErrorHub: 0
     Hub: 0
-    UNet: 1
+    UNet: 0
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: b64d3a2c-964a-4372-8a6f-06eefc703ec9
-  projectName: "TP - Dise\xF1o de Niveles (1)"
-  organizationId: ultimagames
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
