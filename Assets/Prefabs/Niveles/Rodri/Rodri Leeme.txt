@@ -1,0 +1,4 @@
+De 2 y 4 conecciones tenes todo.
+Faltan las 4 de (1 sola coneccion), y las 4 de (3 conecciones).
+
+Fijate de usar el componente "Level Prefab Settings" de referencia.
