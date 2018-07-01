@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class Node : MonoBehaviour {
 	public string Name = "Node";
+	//PathFinding.
 	public bool visited = false;
 	public Node Parent;
+
+	public LevelCoder GeneradorCodigo;
+
+	//Calculo las conecciones (Boton).
+	public int code;
 
 	public List<Node> Connections = new List<Node>();
 
@@ -23,6 +29,7 @@ public class Node : MonoBehaviour {
 		foreach (var coneccion in Connections)
 		{
 			Vector3 dir = (coneccion.transform.position - transform.position).normalized;
+
 			//MonoBehaviour.print("Nombre: " + Name + " Direccion del vecino: " + dir);
 			if (dir == Vector3.forward)
 				Con[0] = true;
@@ -38,19 +45,6 @@ public class Node : MonoBehaviour {
 		}
 
 		return new NodeConnections(ConnectionNumber,Con[0], Con[1], Con[2], Con[3]);
-	}
-
-	private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.green;
-		if (UnityEditor.Selection.activeGameObject == this.gameObject)
-		{
-			for (int i = 0; i < Connections.Count; i++)
-			{
-				if (Connections[i] != null)
-					Gizmos.DrawLine(transform.position, Connections[i].transform.position);
-			}
-		}
 	}
 }
 
