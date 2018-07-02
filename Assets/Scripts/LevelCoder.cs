@@ -11,10 +11,6 @@ public class LevelCoder : MonoBehaviour
     //Muestra el codigo generado dado un objeto.
     public LevelPrefabSettings TestObjet;
     public int ExampleCode = 0;
-
-//Muestra los codigos generados por cada objeto en una lista dentro del manager
-    //Level Prefabs.
-    public LevelCollectionManager CodeManager;
     public List<string[]> DebugResults = new List<string[]>();// Nombre del objeto [0],Codigo Generado[1],Si hay repetidos[2],Objetos que comparten codigo[3](x defecto None).
 
     public int GetCode(int conectionNumber, bool top, bool bottom, bool right, bool left)

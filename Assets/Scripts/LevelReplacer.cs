@@ -26,12 +26,12 @@ public class LevelReplacer : MonoBehaviour {
 		foreach (var node in Nodes)
 		{
 			NodeConnections NodeConfigSet = node.GetConnectionSet();
-			int code = LevelCode.GetCode(NodeConfigSet);
+			int code = LevelCoder.GetCode(NodeConfigSet);
 			//print("Config Code: " + code);
 			if (code == 0)
 				continue;
 
-			List<GameObject> posibleLevel = LevelCollectionManager.instance.getLevelPrefabs(NodeConfigSet);
+			List<GameObject> posibleLevel = LevelCollectionManager.getLevelPrefabs(NodeConfigSet);
 
 			//print("Lista de Posibles niveles: " + posibleLevel.Count);
 			int randomIndex = UnityEngine.Random.Range(0, posibleLevel.Count);

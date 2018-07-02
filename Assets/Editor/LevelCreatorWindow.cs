@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -28,6 +27,7 @@ public class LevelCreatorWindow : EditorWindow {
 	public static void OpenWindow()
     {
         var MainWindow = GetWindow<LevelCreatorWindow>();
+        //Le digo a level collection Manager que instancie todo lo que tiene que instanciar.
         MainWindow.Show();
     }
 
@@ -38,16 +38,22 @@ public class LevelCreatorWindow : EditorWindow {
 
         EditorGUILayout.PrefixLabel("Prefab de nodo");
         LevelNode = (GameObject)EditorGUILayout.ObjectField(LevelNode, typeof(GameObject), true);
+        //--------------------------Variables-----------------------------------------
+        NodeDistance = EditorGUILayout.FloatField("Distancia entre nodos: ",NodeDistance);
+        TreeLenght = EditorGUILayout.IntSlider(TreeLenght, 3, 12);
+        LevelNodeLayer = EditorGUILayout.IntField("Node Layer Index:", LevelNodeLayer);
 
         //---------------------------Materiales---------------------------------------
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Materiales:");
-        InitialNodeMaterial = (Material)EditorGUILayout.ObjectField(InitialNodeMaterial, typeof(Material), true);
+        InitialNodeMaterial = (Material)EditorGUILayout.ObjectField("Nodo Inicial: ",InitialNodeMaterial, typeof(Material), true);
         EditorGUILayout.Space();
-        SafeWay = (Material)EditorGUILayout.ObjectField(SafeWay, typeof(Material), true);
+        SafeWay = (Material)EditorGUILayout.ObjectField("Nodo Seguro: ",SafeWay, typeof(Material), true);
         EditorGUILayout.Space();
-        PosibleFinalNode = (Material)EditorGUILayout.ObjectField(PosibleFinalNode, typeof(Material), true);
+        PosibleFinalNode = (Material)EditorGUILayout.ObjectField("Nodo Posible Final: ", PosibleFinalNode, typeof(Material), true);
         EditorGUILayout.Space();
-        FinalNode = (Material)EditorGUILayout.ObjectField(FinalNode, typeof(Material), true);
+        FinalNode = (Material)EditorGUILayout.ObjectField("Nodo Final: ",FinalNode, typeof(Material), true);
         EditorGUILayout.Space();
 
 
@@ -57,6 +63,9 @@ public class LevelCreatorWindow : EditorWindow {
             Debug += "El Reemplazador no ha sido Asignado!.\n";
         if (!LevelNode)
             Debug += "El prefab de nodo no ha sido Asignado!.\n";
+        if (!InitialNodeMaterial || !SafeWay || !PosibleFinalNode || !FinalNode)
+            Debug += "No todos los materiales fueron asignados.\n";
+        EditorGUILayout.LabelField(Debug,new GUILayoutOption[] { GUILayout.MinHeight(50)});
 
         EditorGUI.BeginDisabledGroup(Replacer && LevelNode ? false : true);
         //1 - Genero el arbol de nodos, con un inicio y un fin.
@@ -87,7 +96,7 @@ public class LevelCreatorWindow : EditorWindow {
             {
                 case 0://Posibilidad--> Ninguna, destuyo el objeto.
                     Nodes.Remove(item);
-                    Destroy(item.gameObject);
+                    DestroyImmediate(item.gameObject);
                     break;
                 case 1:
                     //Si tiene 1 sola coneccion.
@@ -96,7 +105,7 @@ public class LevelCreatorWindow : EditorWindow {
                     if (RoulleteSelection.RoulleteWheelSelection(A) == 1)
                     {
                         Nodes.Remove(item);
-                        Destroy(item.gameObject);
+                        DestroyImmediate(item.gameObject);
                     }
                     break;
                 case 2:
@@ -113,7 +122,7 @@ public class LevelCreatorWindow : EditorWindow {
                     if (AccionT1 == 2)
                     {
                         Nodes.Remove(item);
-                        Destroy(item.gameObject);
+                        DestroyImmediate(item.gameObject);
                     }
                     break;
                 case 3:
@@ -138,7 +147,7 @@ public class LevelCreatorWindow : EditorWindow {
                     if (AccionT2 == 3)
                     {
                         Nodes.Remove(item);
-                        Destroy(item.gameObject);
+                        DestroyImmediate(item.gameObject);
                     }
                     break;
                 case 4:
@@ -173,7 +182,7 @@ public class LevelCreatorWindow : EditorWindow {
                     if (AccionT3 == 4)
                     {
                         Nodes.Remove(item);
-                        Destroy(item.gameObject);
+                        DestroyImmediate(item.gameObject);
                     }
                     break;
                 default:
@@ -234,6 +243,7 @@ public class LevelCreatorWindow : EditorWindow {
                     continue;
 
                 var secondNode = Nodes[j];
+
                 float distanceBetweenNodes = Vector3.Distance(currentNode.gameObject.transform.position, secondNode.gameObject.transform.position);
                 if (distanceBetweenNodes < NodeDistance + (NodeDistance * 0.25))//Añadimos el vecino.
                     MisVecinos.Add(secondNode);
