@@ -712,7 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4521621252317850}
   m_Layer: 0
-  m_Name: Cruz
+  m_Name: Cruz nivel Fran
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6698,8 +6698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98de15186a006f24bb931847b31b0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GeneradorCodigo: {fileID: 0}
-  code: 0
   ConnectionsNumber: 4
   TopConnection: 1
   BottomConnection: 1
