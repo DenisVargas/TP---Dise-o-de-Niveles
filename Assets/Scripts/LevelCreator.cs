@@ -47,6 +47,7 @@ public class LevelReplacer : MonoBehaviour {
 		CleanNodes();
 		print("Los nodos han sido reemplazados correctamente.");
 	}
+    
 
     private void CleanNodes()
     {
