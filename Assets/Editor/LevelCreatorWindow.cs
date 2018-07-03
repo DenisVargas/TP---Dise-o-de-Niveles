@@ -8,7 +8,6 @@ public class LevelCreatorWindow : EditorWindow {
     public float NodeDistance = 60; //Distancia entre niveles.
     [Range(3, 24)]
     public int TreeLenght = 4; //Cantidad de nodos a generar.
-    public int LevelNodeLayer;
 
     public Material InitialNodeMaterial;
     public Material SafeWay;
@@ -41,7 +40,6 @@ public class LevelCreatorWindow : EditorWindow {
         //--------------------------Variables-----------------------------------------
         NodeDistance = EditorGUILayout.FloatField("Distancia entre nodos: ",NodeDistance);
         TreeLenght = EditorGUILayout.IntSlider(TreeLenght, 3, 12);
-        LevelNodeLayer = EditorGUILayout.IntField("Node Layer Index:", LevelNodeLayer);
 
         //---------------------------Materiales---------------------------------------
         EditorGUILayout.Space();
@@ -76,9 +74,13 @@ public class LevelCreatorWindow : EditorWindow {
             FindSafeWayToB();
             //Excluyo el camino correcto del arbol y destruyo conecciones al azar en los nodos restantes 1 a 1:
             ExcludeAndDestroyConections();
-            Replacer.SetNodesToReplace(Nodes, true);
         }
         EditorGUI.EndDisabledGroup();
+
+        if (GUILayout.Button("Reemplazar Nodos por LevelPrefabs"))
+        {
+            Replacer.SetNodesToReplace(Nodes, true);
+        }
     }
 
 
@@ -219,15 +221,15 @@ public class LevelCreatorWindow : EditorWindow {
                 Vector3 pos = Vector3.zero;
                 xValue = j * (int)NodeDistance;
                 pos = new Vector3(xValue, 0, zValue);
+                NodesGenerated++;
                 var NewNode = Instantiate(LevelNode, pos, Quaternion.identity);
-                NodesGenerated += 1;
                 NewNode.GetComponent<Node>().Name += NodesGenerated.ToString();
                 Nodes.Add(NewNode.GetComponent<Node>());
             }
             xValue = 0;//--------------->Reseteo el valor de x.
         }
 
-        //Relleno la lista de vecinos de cada nodo. 
+        //Relleno la lista de vecinos de cada nodo.
         //Calculo los potenciales nodos de inicio y fin.
         List<Node> Included = new List<Node>();
         float maxDistance = Nodes[Nodes.Count - 1].gameObject.transform.position.x;
@@ -237,16 +239,16 @@ public class LevelCreatorWindow : EditorWindow {
         {
             var currentNode = Nodes[i];
             List<Node> MisVecinos = new List<Node>();
-            for (int j = 0; j < Nodes.Count; j++)
+            foreach (var item in Nodes)
             {
-                if (Nodes[j] == currentNode)
+                if (item == currentNode)
                     continue;
-
-                var secondNode = Nodes[j];
-
-                float distanceBetweenNodes = Vector3.Distance(currentNode.gameObject.transform.position, secondNode.gameObject.transform.position);
-                if (distanceBetweenNodes < NodeDistance + (NodeDistance * 0.25))//Añadimos el vecino.
-                    MisVecinos.Add(secondNode);
+                else if (item != null)
+                {
+                    float distanceBetweenNodes = Vector3.Distance(currentNode.transform.position, item.transform.position);
+                        if (distanceBetweenNodes < NodeDistance + (NodeDistance * 0.25))//Añadimos el vecino.
+                            MisVecinos.Add(item);
+                }
             }
             currentNode.GetComponent<Node>().Connections = MisVecinos;
         }

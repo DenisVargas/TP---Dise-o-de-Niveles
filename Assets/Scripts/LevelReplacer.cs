@@ -4,21 +4,12 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class LevelReplacer : MonoBehaviour {
-    public static bool ReplaceEnabled = false;
     public static List<Node> Nodes = new List<Node>();
-	void Update()
-	{
-        if (ReplaceEnabled)
-        {
-            //4 - Recorro el arbol completo una vez mas y reemplazo los nodos, por el prefab que corresponda.
-            StartCoroutine(ReplaceNodesForLevels());
-        }
-	}
 
     public void SetNodesToReplace(List<Node> NodesToReplace, bool StartReplace)
     {
         Nodes = NodesToReplace;
-        ReplaceEnabled = StartReplace;
+        StartCoroutine(ReplaceNodesForLevels());
     }
 
 	IEnumerator ReplaceNodesForLevels()
@@ -42,20 +33,19 @@ public class LevelReplacer : MonoBehaviour {
 			Instantiate(posibleLevel[randomIndex], nodePos, rot);
 			yield return new WaitForEndOfFrame();
 		}
-		StopCoroutine(ReplaceNodesForLevels());
-        ReplaceEnabled = false;
-		CleanNodes();
+        CleanNodes();
 		print("Los nodos han sido reemplazados correctamente.");
+        StopCoroutine(ReplaceNodesForLevels());
 	}
     
 
     private void CleanNodes()
     {
         //print("Nodos a limpiar: " + Nodes.Count);
-        foreach (var item in Nodes)
+        for (int i = 0; i < Nodes.Count; i++)
         {
-            //print(item.Name + " sera destruido.");
-            Destroy(item.gameObject);
+            Nodes[i].gameObject.SetActive(false);
+            //DestroyImmediate(Nodes[i].gameObject);
         }
         Nodes.Clear();
     }
