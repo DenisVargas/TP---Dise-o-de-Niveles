@@ -83,7 +83,6 @@ public class LevelCreatorWindow : EditorWindow {
         }
     }
 
-
     //--------------------------------------------------------------------------------
     private void ExcludeAndDestroyConections()
     {
