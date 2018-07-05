@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114714922562136420}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4767144032843478}
   m_Layer: 0
   m_Name: Player+Respawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608417893326940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.031, y: 2, z: -28.49}
+<<<<<<< HEAD
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: -0.19999999, y: 1, z: -28.7}
+>>>>>>> b7718e363157d925163596eb936803a0846bf1ea
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4295288730303370}
@@ -151,7 +155,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 300
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -387,7 +391,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuntoInicial: {fileID: 1908332971734708}
   PosicionMinima: -21
-  PosicionRespawn: {x: 0, y: 0, z: 0}
 --- !u!124 &124410019792941478
 Behaviour:
   m_ObjectHideFlags: 1
