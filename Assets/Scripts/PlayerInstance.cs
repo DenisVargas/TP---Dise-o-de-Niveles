@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class PlayerMorido : MonoBehaviour {
+public class PlayerInstance : MonoBehaviour {
 	public GameObject PuntoInicial;
 	public float PosicionMinima = 0;
 
-	private Vector3 PosicionRespawn;
+	public Vector3 PosicionRespawn;
 	// Use this for initialization
 	void Start () {
 		PosicionRespawn = PuntoInicial.transform.position;
