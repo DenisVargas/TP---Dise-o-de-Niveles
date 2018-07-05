@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4612974382453860}
   - component: {fileID: 114338304750371682}
   m_Layer: 0
-  m_Name: Entrada_Salida
+  m_Name: Entrada_Salida T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -963,8 +963,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199202946023722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2734.5942, y: 208.80902, z: 598.481}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4159361034303386}
@@ -1001,7 +1001,7 @@ Transform:
   - {fileID: 4428346014074546}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!4 &4655433810437788
 Transform:
   m_ObjectHideFlags: 1
@@ -11014,11 +11014,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GeneradorCodigo: {fileID: 0}
   code: 0
-  ConnectionsNumber: 2
-  TopConnection: 0
+  ConnectionsNumber: 1
+  TopConnection: 1
   BottomConnection: 0
-  RightConnection: 1
-  LeftConnections: 1
+  RightConnection: 0
+  LeftConnections: 0
 --- !u!114 &114342022345303876
 MonoBehaviour:
   m_ObjectHideFlags: 1
