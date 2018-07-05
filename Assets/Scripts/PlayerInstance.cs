@@ -17,4 +17,10 @@ public class PlayerInstance : MonoBehaviour {
 			transform.position = PosicionRespawn;
 		}
 	}
+
+    public void DieAndRespawn()
+    {
+        transform.position = PosicionRespawn;
+        transform.rotation = Quaternion.identity;
+    }
 }

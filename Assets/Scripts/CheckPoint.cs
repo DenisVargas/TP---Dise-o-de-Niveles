@@ -9,8 +9,6 @@ public class CheckPoint : MonoBehaviour {
     private void OnTriggerEnter(Collider c)
     {
         if (c.tag == "Player")
-        {
             c.GetComponent<PlayerInstance>().PosicionRespawn = transform.position;
-        }
     }
 }
