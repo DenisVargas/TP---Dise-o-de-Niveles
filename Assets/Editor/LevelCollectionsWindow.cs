@@ -16,10 +16,10 @@ public class LevelCollectionsWindow : EditorWindow {
     {
         var MainWindow = GetWindow<LevelCollectionsWindow>();
         //Me fijo si existe un archivo de configuracion.
-        LevelCollectionManager.LoadPrefabs();
+        //LevelCollectionManager.LoadPrefabs();
         MainWindow.LocalPrefabs = new List<GameObject>(LevelCollectionManager.LevelPrefabs);
-        LevelCollectionManager.Register();
-        LevelCollectionManager.CheckRegisteredList();
+        //LevelCollectionManager.Register();
+        //LevelCollectionManager.CheckRegisteredList();
         MainWindow._Checked = true;
         MainWindow.Show();
     }
@@ -103,7 +103,6 @@ public class LevelCollectionsWindow : EditorWindow {
         if (GUILayout.Button("Force Check All objects!"))
         {
             LevelCollectionManager.CheckRegisteredList();
-            
             _Checked = true;
         }
         EditorGUI.BeginDisabledGroup(!_Checked);

@@ -75,15 +75,18 @@ public class LevelCreatorWindow : EditorWindow {
             FindSafeWayToB();
             //Excluyo el camino correcto del arbol y destruyo conecciones al azar en los nodos restantes 1 a 1:
             ExcludeAndDestroyConections();
-            Replacer.SetNodesToReplace(Nodes, true);
         }
-        EditorGUI.EndDisabledGroup();
-     
         EditorGUI.EndDisabledGroup();
 
         if (GUILayout.Button("Reemplazar Nodos por LevelPrefabs"))
         {
             Replacer.SetNodesToReplace(Nodes, true);
+        }
+
+        GUI.backgroundColor = Color.green;
+        if (GUILayout.Button("Abrir Colleccion"))
+        {
+            LevelCollectionsWindow.OpenWindow();
         }
     }
     //--------------------------------------------------------------------------------
@@ -198,7 +201,8 @@ public class LevelCreatorWindow : EditorWindow {
     private void FindSafeWayToB()
     {
         //Debemos encontrar el camino correcto.
-        ExcludedNodes = DFS.DeepFirstSearch(StartingNode, FinalleNode, true);
+        //ExcludedNodes = DFS.DeepFirstSearch(StartingNode, FinalleNode, true);
+        ExcludedNodes = PathFinding.ThetaStar(StartingNode, FinalleNode);
         IncludedNodes = new List<Node>(Nodes);
         foreach (var item in ExcludedNodes)
         {
@@ -211,6 +215,11 @@ public class LevelCreatorWindow : EditorWindow {
 
     private void GenerateNodeTree()
     {
+        //Limpio lo anterior
+        Nodes.Clear();
+        ExcludedNodes.Clear();
+        IncludedNodes.Clear();
+
         //Genero la grilla de nodos inicial.
         int zValue = 0;
         int xValue = 0;
@@ -233,12 +242,12 @@ public class LevelCreatorWindow : EditorWindow {
             xValue = 0;//--------------->Reseteo el valor de x.
         }
 
-        //Relleno la lista de vecinos de cada nodo.
         //Calculo los potenciales nodos de inicio y fin.
         List<Node> Included = new List<Node>();
         float maxDistance = Nodes[Nodes.Count - 1].gameObject.transform.position.x;
         float randomMaxDistance = UnityEngine.Random.Range(maxDistance * 0.6f, maxDistance);
 
+        //Relleno la lista de vecinos de cada nodo.
         for (int i = 0; i < Nodes.Count; i++)
         {
             var currentNode = Nodes[i];

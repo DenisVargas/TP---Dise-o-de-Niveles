@@ -15,8 +15,6 @@ public static class LevelCollectionManager{
 	static LevelCollectionManager()
 	{
 		LoadPrefabs();
-		Register();
-		CheckRegisteredList();
 	}
 	//---------------------Save and Load------------------------------
 	/// <summary>
@@ -32,7 +30,9 @@ public static class LevelCollectionManager{
 			if (SaveFile.LevelPrefabs.Count > 0)
 			{
 				LevelPrefabs = SaveFile.LevelPrefabs;
-				MonoBehaviour.print("Se ha cargado la configuracion.");
+				Register();
+				CheckRegisteredList();
+				MonoBehaviour.print("Se ha cargado correctamente la configuracion .");
 			}
 		}
 		else

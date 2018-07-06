@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class Node : MonoBehaviour {
 	public string Name = "Node";
-	//PathFinding.
+    //PathFinding.
+    public float H = 0;
+    public float G = 0;
+    public float F = 0;
+    public float index;
 	public bool visited = false;
-	public Node Parent;
+    public bool isBlocked = false;
+
+    public Node Parent;
 
 	public LevelCoder GeneradorCodigo;
 
@@ -45,6 +51,18 @@ public class Node : MonoBehaviour {
 		}
 
 		return new NodeConnections(ConnectionNumber,Con[0], Con[1], Con[2], Con[3]);
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (Connections.Count > 0)
+			foreach (var con in Connections)
+			{
+				if (!con)
+					continue;
+				Gizmos.color = con.Connections.Contains(this) ? Color.green : Color.red;
+				Gizmos.DrawLine(transform.position, con.transform.position);
+			}
 	}
 }
 
