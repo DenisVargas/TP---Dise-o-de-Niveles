@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Editor/Saves.meta
 guid: b0d0dbd99e0630c4885bcb9a045512fe
 folderAsset: yes
 timeCreated: 1530500455
+=======
+guid: 21d3062b76fa3ff46a4ab36e216be34c
+folderAsset: yes
+timeCreated: 1530840655
+>>>>>>> 4b81e939525573882f15f56ee10c636828e5984b:Assets/Editor/Saves.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
