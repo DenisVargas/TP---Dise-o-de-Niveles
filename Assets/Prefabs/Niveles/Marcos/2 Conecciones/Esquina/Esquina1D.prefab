@@ -14261,10 +14261,10 @@ MonoBehaviour:
   GeneradorCodigo: {fileID: 0}
   code: 0
   ConnectionsNumber: 2
-  TopConnection: 1
+  TopConnection: 0
   BottomConnection: 1
   RightConnection: 0
-  LeftConnections: 0
+  LeftConnections: 1
 --- !u!114 &114298742261955896
 MonoBehaviour:
   m_ObjectHideFlags: 1

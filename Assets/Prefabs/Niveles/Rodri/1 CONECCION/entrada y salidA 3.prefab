@@ -179,6 +179,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4952269965975318}
+  - component: {fileID: 114724006139976048}
   m_Layer: 0
   m_Name: entrada y salidA 3
   m_TagString: Untagged
@@ -78892,6 +78893,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &114724006139976048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1559873512819158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98de15186a006f24bb931847b31b0f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GeneradorCodigo: {fileID: 0}
+  code: 0
+  ConnectionsNumber: 1
+  TopConnection: 0
+  BottomConnection: 1
+  RightConnection: 0
+  LeftConnections: 0
 --- !u!114 &114725885874504786
 MonoBehaviour:
   m_ObjectHideFlags: 1
