@@ -672,7 +672,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4763260537402734}
-  - component: {fileID: 114489184575124656}
+  - component: {fileID: 114197804820276306}
   m_Layer: 0
   m_Name: T C
   m_TagString: Untagged
@@ -11976,6 +11976,24 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114197804820276306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1775671872350072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98de15186a006f24bb931847b31b0f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GeneradorCodigo: {fileID: 0}
+  code: 0
+  ConnectionsNumber: 3
+  TopConnection: 1
+  BottomConnection: 1
+  RightConnection: 1
+  LeftConnections: 0
 --- !u!114 &114201256182628242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14360,24 +14378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
---- !u!114 &114489184575124656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1775671872350072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98de15186a006f24bb931847b31b0f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GeneradorCodigo: {fileID: 0}
-  code: 0
-  ConnectionsNumber: 3
-  TopConnection: 1
-  BottomConnection: 1
-  RightConnection: 1
-  LeftConnections: 0
 --- !u!114 &114514707827756006
 MonoBehaviour:
   m_ObjectHideFlags: 1

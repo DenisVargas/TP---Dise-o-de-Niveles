@@ -10,12 +10,7 @@ public static class LevelCollectionManager{
 	public static int registeredPrefabs = 0;
 
 	private static LevelCollectionSaves SaveFile;
-
-
-	static LevelCollectionManager()
-	{
-		LoadPrefabs();
-	}
+	
 	//---------------------Save and Load------------------------------
 	/// <summary>
 	/// Carga las configuraciones guardadas.
@@ -39,22 +34,6 @@ public static class LevelCollectionManager{
 			ScriptableObjectUtility.CreateAsset("Assets/Editor/Saves",out SaveFile);
 	}
 	/// <summary>
-	/// Permite que el manager, guarde las configuraciones que tiene.
-	/// </summary>
-	public static void SavePrefabs()
-	{
-		if (SaveFile)
-		{
-			SaveFile.LevelPrefabs = LevelPrefabs;
-			MonoBehaviour.print("Se ha sobreescrito la configuracion correctamente.");
-		}
-		else
-		{
-			LoadPrefabs();
-			SavePrefabs();
-		}
-	}
-	/// <summary>
 	/// Permite Sobreescribir el archivo de guardado y actualizar el estado.
 	/// </summary>
 	/// <param name="ListToSave">Lista de prefabs externa.</param>
@@ -62,13 +41,14 @@ public static class LevelCollectionManager{
 	{
 		if (SaveFile)
 		{
-			SaveFile.LevelPrefabs = ListToSave;
+			LevelPrefabs = ListToSave;
+			SaveFile.LevelPrefabs = LevelPrefabs;
 			MonoBehaviour.print("Se ha sobreescrito la configuracion correctamente.");
 		}
 		else
 		{
 			LoadPrefabs();
-			SavePrefabs();
+			SavePrefabs(ListToSave);
 		}
 	}
 	public static void Register()
@@ -106,23 +86,22 @@ public static class LevelCollectionManager{
 		//Relleno la lista de prefabs
 		if (LevelPrefabs.Count > 0)
 		{
-			foreach (var item in LevelPrefabs)
+			//obtengo el codigo del nodo recibido.
+			int recievedCode = LevelCoder.GetCode(ParameterNode);
+			//devuelvo los prefabs existentes.
+			NodeConnections A = ParameterNode;
+
+			int code = LevelCoder.GetCode(A);
+
+			if (prefabs.ContainsKey(code))
+					return prefabs[recievedCode];
+			else
 			{
-				NodeConnections A = item.GetComponent<LevelPrefabSettings>().getLevelSet();
-
-				int code = LevelCoder.GetCode(A);
-				//print(code);
-
-				if (prefabs.ContainsKey(code))
-					prefabs[code].Add(item);
-				else
-					prefabs.Add(code, new List<GameObject> { item });
+				MonoBehaviour.print(string.Format("No hay objetos con codigo {0} en la coleccion!.",code));
+				return new List<GameObject>();
 			}
 		}
-		//obtengo el codigo del nodo recibido.
-		int recievedCode = LevelCoder.GetCode(ParameterNode);
-		//devuelvo los prefabs existentes.
-		return prefabs[recievedCode];
+		return null;
 	}
 }
 

@@ -16,10 +16,10 @@ public class LevelCollectionsWindow : EditorWindow {
     {
         var MainWindow = GetWindow<LevelCollectionsWindow>();
         //Me fijo si existe un archivo de configuracion.
-        //LevelCollectionManager.LoadPrefabs();
+        LevelCollectionManager.LoadPrefabs();
+        LevelCollectionManager.Register();
+        LevelCollectionManager.CheckRegisteredList();
         MainWindow.LocalPrefabs = new List<GameObject>(LevelCollectionManager.LevelPrefabs);
-        //LevelCollectionManager.Register();
-        //LevelCollectionManager.CheckRegisteredList();
         MainWindow._Checked = true;
         MainWindow.Show();
     }
@@ -30,9 +30,8 @@ public class LevelCollectionsWindow : EditorWindow {
         Info += string.Format("La coleccion contiene {0} objetos.\n", LevelCollectionManager.LevelPrefabs.Count);
         if (LevelCollectionManager.registeredPrefabs != LocalPrefabs.Count)
             Info += string.Format("Solo {0} objetos estan registrados!.\n", LevelCollectionManager.registeredPrefabs);
-        if (LevelCollectionManager.registeredPrefabs == LocalPrefabs.Count)
-            if (LevelCollectionManager.registeredPrefabs != 0)
-                Info += "Todos los objetos estan registrados";
+        if (LevelCollectionManager.registeredPrefabs == LocalPrefabs.Count && LevelCollectionManager.registeredPrefabs != 0)
+            Info += "Todos los objetos estan registrados";
         if (!_Checked)
             Info += "No se ha chequeado que todos los objetos esten registrados!\n";
 
@@ -87,8 +86,9 @@ public class LevelCollectionsWindow : EditorWindow {
         if (GUILayout.Button("Save Changes"))
         {
             LevelCollectionManager.SavePrefabs(LocalPrefabs);
+            LevelCollectionManager.Register();
+            LevelCollectionManager.CheckRegisteredList();
             _hasChanges = false;
-            _Checked = false;
             _Saved = true;
         }
         EditorGUI.EndDisabledGroup();
@@ -98,7 +98,7 @@ public class LevelCollectionsWindow : EditorWindow {
         if (_hasChanges && !_Saved)
             EditorGUILayout.HelpBox("Hay cambios que no han sido guardados!", MessageType.Warning);
 
-
+        //--------------------------------Chequeos-----------------------------------------------------------------------
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Force Check All objects!"))
         {
@@ -112,8 +112,6 @@ public class LevelCollectionsWindow : EditorWindow {
         }
         EditorGUI.EndDisabledGroup();
         EditorGUILayout.EndHorizontal();
-
-
     }
 
 }

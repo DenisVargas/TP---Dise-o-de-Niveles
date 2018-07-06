@@ -5,27 +5,17 @@ using UnityEditor;
 public class LevelPrefabSettingsEditor : Editor
 {
     LevelPrefabSettings Settings;
-    LevelCoder coder;
     private void OnEnable()
     {
         Settings = (LevelPrefabSettings)target;
-        coder = Settings.GeneradorCodigo;
     }
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
-        EditorGUILayout.PrefixLabel("Codificador:");
-        Settings.GeneradorCodigo = (LevelCoder)EditorGUILayout.ObjectField(Settings.GeneradorCodigo, typeof(LevelCoder),true);
-
-        if (Settings.GeneradorCodigo)
-        {
-            Settings.code = coder.GetCode(Settings.ConnectionsNumber, Settings.TopConnection, Settings.BottomConnection, Settings.RightConnection, Settings.LeftConnections);
-        }
-
         Settings.ConnectionsNumber = ConnectionsAviable(Settings);
         EditorGUILayout.LabelField("Cantidad de conecciones activadas: " + Settings.ConnectionsNumber);
 
-        EditorGUILayout.LabelField("Codigo de prefab: " + Settings.code);
+        EditorGUILayout.LabelField("Codigo de prefab: " + LevelCoder.GetCode(Settings.getLevelSet()));
 
         //----------------------------------------------------------------------------
         EditorGUILayout.BeginHorizontal();

@@ -13,19 +13,6 @@ public class LevelCoder : MonoBehaviour
     public int ExampleCode = 0;
     public List<string[]> DebugResults = new List<string[]>();// Nombre del objeto [0],Codigo Generado[1],Si hay repetidos[2],Objetos que comparten codigo[3](x defecto None).
 
-    public int GetCode(int conectionNumber, bool top, bool bottom, bool right, bool left)
-    {
-        int code = conectionNumber;
-        if (top)
-            code += TopConnectionWeight * conectionNumber;
-        if (bottom)
-            code += BottomConnectionWeight * conectionNumber;
-        if (right)
-            code += RightConnectionWeight * conectionNumber;
-        if (left)
-            code += LeftConnectionWeight * conectionNumber;
-        return code;
-    }
     public static int GetCode(NodeConnections ConfigSet)
     {
         int code = ConfigSet.ConnectionsNumber;
